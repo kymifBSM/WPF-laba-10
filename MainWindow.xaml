@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPF_laba10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_laba10"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="StudentList" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.15*" />
+        </Grid.RowDefinitions>
+        <ListView Name="studentList" Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=fullname}"
+                                    Width="190">Фамилия, имя студента
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=zachetFullName}" Width="200">Аттестованные студенты
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=neattestFullName}" Width="200">Неаттестованные студенты
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=marks}" Width="200">Оценки студентов
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+                <col:ArrayList x:Key="students">
+                </col:ArrayList>
+            </ListView.Resources>
+        </ListView>
+
+        <StackPanel Grid.Row="1">
+                <Label Content="Фамилия, имя" Width="200" Margin="25 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <Label Content="Оценка" Width="100" Margin="235 -30 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <TextBox x:Name="name" Width="200" Margin="30 0 0 0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="mark" Width="100" Margin="240 -20 0 0" HorizontalAlignment="Left"/>
+                <Button Content="Зачет" Width="50" Margin="370 -20 0 0" HorizontalAlignment="Left" Click="Zachet"/>
+                <Button Content="Не аттестован" Width="82" Margin="422 -20 0 0" HorizontalAlignment="Left" Click="NeZachet"/>
+                <Button Content="Добавить в список" Width="110" Margin="506 -20 0 0" HorizontalAlignment="Left" Click="Add"/>
+                <Button Content="Очистить результат" Width="112" Margin="618 -20 0 0" HorizontalAlignment="Left" Click="Clear"/>
+            </StackPanel>
+    </Grid>
+</Window>
